@@ -15,8 +15,8 @@ export const NewCustomers: React.FC = () => {
     const API_URL = useApiUrl();
     const url = `${API_URL}/newCustomers`;
     const query = {
-        start: dayjs().subtract(7, "days").startOf("day"),
-        end: dayjs().startOf("day"),
+        startDay: dayjs().subtract(7, "days").startOf("day").format("YYYY-MM-DD"),
+        endDay: dayjs().startOf("day").format("YYYY-MM-DD"),
     };
 
     const { data } = useCustom<{
@@ -30,6 +30,7 @@ export const NewCustomers: React.FC = () => {
             query,
         },
     });
+
     return (
         <Stack
             justifyContent="space-between"

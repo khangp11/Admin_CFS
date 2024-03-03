@@ -18,8 +18,8 @@ export const DailyRevenue: React.FC = () => {
     const url = `${API_URL}/dailyRevenue`;
 
     const query = {
-        start: dayjs().subtract(7, "days").startOf("day"),
-        end: dayjs().startOf("day"),
+        startDay: dayjs().subtract(7, "days").startOf("day").format("YYYY-MM-DD"),
+        endDay: dayjs().startOf("day").format("YYYY-MM-DD"),
     };
 
     const { data } = useCustom<{

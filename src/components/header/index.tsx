@@ -76,59 +76,59 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
         },
     });
 
-    const { refetch: refetchStores } = useList<IStore>({
-        resource: "stores",
-        config: {
-            filters: [{ field: "q", operator: "contains", value }],
-        },
-        queryOptions: {
-            enabled: false,
-            onSuccess: (data) => {
-                const storeOptionGroup = data.data.map((item) => {
-                    return {
-                        label: item.title,
-                        url: "images/default-store-img.png",
-                        link: `/stores/edit/${item.id}`,
-                        category: t("stores.stores"),
-                    };
-                });
-                setOptions((prevOptions) => [
-                    ...prevOptions,
-                    ...storeOptionGroup,
-                ]);
-            },
-        },
-    });
+    // const { refetch: refetchStores } = useList<IStore>({
+    //     resource: "stores",
+    //     config: {
+    //         filters: [{ field: "q", operator: "contains", value }],
+    //     },
+    //     queryOptions: {
+    //         enabled: false,
+    //         onSuccess: (data) => {
+    //             const storeOptionGroup = data.data.map((item) => {
+    //                 return {
+    //                     label: item.title,
+    //                     url: "images/default-store-img.png",
+    //                     link: `/stores/edit/${item.id}`,
+    //                     category: t("stores.stores"),
+    //                 };
+    //             });
+    //             setOptions((prevOptions) => [
+    //                 ...prevOptions,
+    //                 ...storeOptionGroup,
+    //             ]);
+    //         },
+    //     },
+    // });
 
-    const { refetch: refetchCouriers } = useList<ICourier>({
-        resource: "couriers",
-        config: {
-            filters: [{ field: "q", operator: "contains", value }],
-        },
-        queryOptions: {
-            enabled: false,
-            onSuccess: (data) => {
-                const courierOptionGroup = data.data.map((item) => {
-                    return {
-                        label: `${item.name} ${item.surname}`,
-                        url: item.avatar[0].url,
-                        link: `/couriers/edit/${item.id}`,
-                        category: t("couriers.couriers"),
-                    };
-                });
-                setOptions((prevOptions) => [
-                    ...prevOptions,
-                    ...courierOptionGroup,
-                ]);
-            },
-        },
-    });
+    // const { refetch: refetchCouriers } = useList<ICourier>({
+    //     resource: "couriers",
+    //     config: {
+    //         filters: [{ field: "q", operator: "contains", value }],
+    //     },
+    //     queryOptions: {
+    //         enabled: false,
+    //         onSuccess: (data) => {
+    //             const courierOptionGroup = data.data.map((item) => {
+    //                 return {
+    //                     label: `${item.name} ${item.surname}`,
+    //                     url: item.avatar[0].url,
+    //                     link: `/couriers/edit/${item.id}`,
+    //                     category: t("couriers.couriers"),
+    //                 };
+    //             });
+    //             setOptions((prevOptions) => [
+    //                 ...prevOptions,
+    //                 ...courierOptionGroup,
+    //             ]);
+    //         },
+    //     },
+    // });
 
     useEffect(() => {
         setOptions([]);
         refetchOrders();
-        refetchCouriers();
-        refetchStores();
+        // refetchCouriers();
+        // refetchStores();
     }, [value]);
 
     return (

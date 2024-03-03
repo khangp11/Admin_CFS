@@ -289,10 +289,10 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
         },
     });
 
-    const { autocompleteProps: storeAutocompleteProps } = useAutocomplete({
-        resource: "stores",
-        defaultValue: getDefaultFilter("store.id", filters, "eq"),
-    });
+    // const { autocompleteProps: storeAutocompleteProps } = useAutocomplete({
+    //     resource: "stores",
+    //     defaultValue: getDefaultFilter("store.id", filters, "eq"),
+    // });
 
     const { autocompleteProps: orderAutocompleteProps } = useAutocomplete({
         resource: "orderStatuses",

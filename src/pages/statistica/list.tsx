@@ -31,13 +31,7 @@ export const ReviewsList: React.FC<IResourceComponentsProps> = () => {
 
   const { dataGridProps } = useDataGrid<IStatistica>({
     initialPageSize: 10,
-    permanentFilter: [
-      {
-        field: "status",
-        operator: "eq",
-        value: "pending",
-      },
-    ],
+
   });
 
   const handleUpdate = (id: BaseKey, status: IStatistica["status"]) => {

@@ -34,7 +34,7 @@ export const DeliveryMap: React.FC = () => {
     return (
         <Box sx={{ height: "576px", width: "100%", position: "relative" }}>
             <Map {...defaultProps}>
-                {/* {orderData?.data.map((order) => {
+                {orderData?.data.map((order) => {
                     return (
                         <MapMarker
                             key={order.id}
@@ -43,27 +43,12 @@ export const DeliveryMap: React.FC = () => {
                                 url: "/images/marker-courier.svg",
                             }}
                             position={{
-                                lat: Number(order.adress.coordinate[0]),
-                                lng: Number(order.adress.coordinate[1]),
+                                lat: parseFloat(order.address.coordinate[0]), // Convert latitude to number
+                                lng: parseFloat(order.address.coordinate[1]), // Convert longitude to number
                             }}
                         />
                     );
-                })} */}
-                {/* {orderData?.data.map((order) => {
-                    return (
-                        <MapMarker
-                            key={order.id}
-                            onClick={() => show("orders", order.id)}
-                            icon={{
-                                url: "/images/marker-location.svg",
-                            }}
-                            position={{
-                                lat: Number(order.store.address.coordinate[0]),
-                                lng: Number(order.store.address.coordinate[1]),
-                            }}
-                        />
-                    );
-                })} */}
+                })}
             </Map>
         </Box>
     );

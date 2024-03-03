@@ -3,14 +3,43 @@ import { disableAutoLogin, enableAutoLogin } from "./hooks";
 
 export const TOKEN_KEY = "refine-auth";
 
-export const authProvider: AuthProvider = {
+
+export const authProvider = {
+
+
     login: async ({ email, password }) => {
-        enableAutoLogin();
-        localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
-        return {
-            success: true,
-            redirectTo: "/",
-        };
+
+        try {
+            const response = await fetch('http://localhost:8080/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!response.ok) {
+                throw new Error('Đăng nhập không thành công');
+            }
+            const data = await response.json();
+
+            localStorage.setItem(TOKEN_KEY, data.token);
+            localStorage.setItem("Username", data.username);
+
+            return {
+                success: true,
+                redirectTo: "/",
+            };
+        } catch (error: any) {
+            return {
+                success: false,
+                error: {
+                    message: "Đăng nhập thất bại",
+                    name: error.message,
+                },
+            };
+        }
     },
     register: async ({ email, password }) => {
         try {
@@ -77,8 +106,8 @@ export const authProvider: AuthProvider = {
 
         return {
             id: 1,
-            name: "admin 1",
-            avatar: "https://i.pravatar.cc/150",
+            name: localStorage.getItem("Username"),
+            avatar: "https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/4fc55c4f6fb04041358e3d2f0860a07a.jpeg?lk3s=a5d48078&x-expires=1709654400&x-signature=JjRafBZ63dsuaOPaiHVW0UZ8x0I%3D"
         };
     },
 };

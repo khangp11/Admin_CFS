@@ -15,8 +15,8 @@ export const DailyOrders: React.FC = () => {
     const API_URL = useApiUrl();
     const url = `${API_URL}/dailyOrders`;
     const query = {
-        start: dayjs().subtract(7, "days").startOf("day"),
-        end: dayjs().startOf("day"),
+        startDay: dayjs().subtract(15, "days").startOf("day").format("YYYY-MM-DD"),
+        endDay: dayjs().startOf("day").format("YYYY-MM-DD"),
     };
 
     const { data } = useCustom<{

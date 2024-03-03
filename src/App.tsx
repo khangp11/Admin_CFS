@@ -30,14 +30,14 @@ import { DashboardPage } from "./pages/dashboard";
 import { OrderList, OrderShow } from "./pages/orders";
 import { UserList, UserShow } from "./pages/users";
 import { ReviewsList } from "./pages/statistica";
-import {
-    CourierList,
-    CourierShow,
-    CourierCreate,
-    CourierEdit,
-} from "./pages/couriers";
+// import {
+//     CourierList,
+//     CourierShow,
+//     CourierCreate,
+//     CourierEdit,
+// } from "./pages/couriers";
 import { AuthPage } from "./pages/auth";
-import { StoreList, StoreEdit, StoreCreate } from "./pages/stores";
+// import { StoreList, StoreEdit, StoreCreate } from "./pages/stores";
 import { ProductList } from "./pages/products";
 import { CategoryList } from "./pages/categories";
 import { ColorModeContextProvider } from "./contexts";
@@ -191,24 +191,14 @@ const App: React.FC = () => {
                                         element={<ProductList />}
                                     />
 
-                                    <Route path="/stores">
-                                        <Route index element={<StoreList />} />
-                                        <Route
-                                            path="create"
-                                            element={<StoreCreate />}
-                                        />
-                                        <Route
-                                            path="edit/:id"
-                                            element={<StoreEdit />}
-                                        />
-                                    </Route>
+
 
                                     <Route
                                         path="/category"
                                         element={<CategoryList />}
                                     />
 
-                                    <Route path="/couriers">
+                                    {/* <Route path="/couriers">
                                         <Route
                                             index
                                             element={<CourierList />}
@@ -225,7 +215,7 @@ const App: React.FC = () => {
                                             path="show/:id"
                                             element={<CourierShow />}
                                         />
-                                    </Route>
+                                    </Route> */}
 
                                     <Route
                                         path="/statistica"
@@ -250,8 +240,8 @@ const App: React.FC = () => {
                                                 type="login"
                                                 formProps={{
                                                     defaultValues: {
-                                                        email: "demo@refine.dev",
-                                                        password: "demodemo",
+                                                        email: "",
+                                                        password: "",
                                                     },
                                                 }}
                                             />
